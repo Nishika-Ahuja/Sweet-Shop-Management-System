@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,19 +10,17 @@ import { AuthService } from '../services/auth.service';
 export class NavbarComponent implements OnInit {
   username = '';
   isAdmin = false;
+  menuOpen = false;
 
   constructor(public auth: AuthService, private router: Router) {}
 
-  menuOpen = false;
-
-toggleMenu() {
-  this.menuOpen = !this.menuOpen;
-}
-
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   ngOnInit(): void {
-    this.username = localStorage.getItem('username') || '';
-    this.isAdmin = localStorage.getItem('is_admin') === '1';
+    this.auth.username$.subscribe(name => this.username = name);
+    this.auth.isAdmin$.subscribe(admin => this.isAdmin = admin);
   }
 
   logout() {
