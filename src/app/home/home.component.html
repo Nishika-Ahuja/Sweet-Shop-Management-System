@@ -1,0 +1,52 @@
+<div class="container home-page">
+  <h1>Welcome to SweetShop 🍬</h1>
+  <p>Delicious sweets delivered to your fingertips!</p>
+
+  <!-- Actions -->
+  <div class="home-actions">
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/login" class="btn">Login</a>
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/register" class="btn">Register</a>
+
+    <a *ngIf="auth.isLoggedIn() && !isAdmin" routerLink="/dashboard" class="btn">
+      Dashboard
+    </a>
+
+    <a *ngIf="auth.isLoggedIn() && isAdmin" routerLink="/admin" class="btn">
+      Admin Dashboard
+    </a>
+  </div>
+
+  <!-- Purchase History -->
+  <div *ngIf="auth.isLoggedIn()">
+    <h3>Hello, {{ username }}!</h3>
+
+    <p *ngIf="!isAdmin">Your recent purchases:</p>
+    <p *ngIf="isAdmin">All users purchase history:</p>
+
+    <div class="purchase-grid" *ngIf="purchases.length > 0">
+  <div class="purchase-card" *ngFor="let p of purchases">
+
+    <div class="card-header">
+      <span class="sweet-name">🍬 {{ p.sweet_name }}</span>
+      <span class="price">₹{{ p.price }}</span>
+    </div>
+
+    <div class="card-body">
+      <p *ngIf="isAdmin" class="user">
+        👤 {{ p.username }}
+      </p>
+
+      <p class="date">
+        🕒 {{ p.created_at + 'Z' | date:'medium' }}
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<p *ngIf="purchases.length === 0" class="empty">
+  No purchases yet 🛒
+</p>
+
+  </div>
+</div>

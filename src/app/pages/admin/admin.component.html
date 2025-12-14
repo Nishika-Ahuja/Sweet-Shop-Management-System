@@ -1,1 +1,25 @@
-<p>admin works!</p>
+<div class="container">
+  <h2>Add New Sweet</h2>
+
+  <input placeholder="Sweet Name" [(ngModel)]="sweet.name">
+  <input placeholder="Category" [(ngModel)]="sweet.category">
+  <input type="number" placeholder="Price" [(ngModel)]="sweet.price">
+  <input type="number" placeholder="Quantity" [(ngModel)]="sweet.quantity">
+
+  <button (click)="addSweet()">Add Sweet</button>
+
+  <!-- Sweet Cards with Restock/Delete -->
+  <div *ngFor="let s of sweets" class="sweet-card">
+    <h3>{{ s.name }}</h3>
+    <p>Category: {{ s.category }}</p>
+    <p>Price: {{ s.price }}</p>
+    <p>Quantity: {{ s.quantity }}</p>
+
+    <div class="flex-row">
+      <input type="number" placeholder="Restock quantity" [(ngModel)]="restockQty" style="width: 70%;">
+      <button (click)="restock(s.id!)">Restock</button>
+      <button (click)="deleteSweet(s.id!)" class="delete-btn">Delete</button>
+    </div>
+  </div>
+  
+</div>

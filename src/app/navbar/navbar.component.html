@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="logo">🍬 SweetShop</div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="nav-links" [class.open]="menuOpen">
+
+    <!-- Guest -->
+    <li *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/register">Register</a>
+    </li>
+
+    <!-- User -->
+    <ng-container *ngIf="auth.isLoggedIn() && !isAdmin">
+      <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/purchases">Purchase History</a></li>
+    </ng-container>
+
+    <!-- Admin -->
+    <ng-container *ngIf="auth.isLoggedIn() && isAdmin">
+      <li><a routerLink="/admin">Admin Dashboard</a></li>
+      <li><a routerLink="/all-purchases">All Purchases</a></li>
+    </ng-container>
+
+    <!-- User Info -->
+    <li *ngIf="auth.isLoggedIn()" class="username">
+      {{ username }}
+    </li>
+
+    <li *ngIf="auth.isLoggedIn()">
+      <button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+</nav>

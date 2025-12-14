@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="container">
+  <h2>Available Sweets</h2>
+
+  <div class="filters">
+    <input placeholder="Search by name" [(ngModel)]="searchName">
+    <input placeholder="Category" [(ngModel)]="searchCategory">
+    <input type="number" placeholder="Min Price" [(ngModel)]="minPrice">
+    <input type="number" placeholder="Max Price" [(ngModel)]="maxPrice">
+    <button (click)="search()">Search</button>
+    <button (click)="clearSearch()">Reset</button>
+  </div>
+
+  <div class="sweet-grid">
+    <div *ngFor="let sweet of sweets" class="sweet-card">
+      <h3>{{ sweet.name }}</h3>
+      <p>Category: {{ sweet.category }}</p>
+      <p>Price: ₹{{ sweet.price }}</p>
+      <p>Stock: {{ sweet.quantity }}</p>
+      <button (click)="buySweet(sweet.id!)" [disabled]="sweet.quantity === 0">Buy</button>
+    </div>
+  </div>
+</div>

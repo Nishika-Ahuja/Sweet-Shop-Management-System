@@ -6,6 +6,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { TokenInterceptor } from './services/token.interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -13,12 +19,24 @@ import { AdminComponent } from './pages/admin/admin.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    AdminComponent
+    AdminComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+  BrowserModule,
+  AppRoutingModule,
+  FormsModule,
+  HttpClientModule
+    
   ],
-  providers: [],
+  providers: [
+     {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

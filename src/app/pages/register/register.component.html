@@ -1,1 +1,13 @@
-<p>register works!</p>
+<div class="container">
+  <h2>Register</h2>
+
+  <input placeholder="Username" [(ngModel)]="username" />
+  <input placeholder="Password" type="password" [(ngModel)]="password" />
+
+  <button (click)="register()">Register</button>
+
+  <p style="text-align:center; margin-top:15px;">
+    Already registered? 
+    <a routerLink="/login" style="color:#6c5ce7; font-weight:500;">Login here</a>
+  </p>
+</div>
