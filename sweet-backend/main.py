@@ -18,7 +18,6 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-
 def create_admin():
     db = SessionLocal()
     admin_user = db.query(models.User).filter(models.User.username == "admin").first()
@@ -138,12 +137,4 @@ def my_purchases(
 ):
     return crud.get_user_purchases(db, user.id)
 
-@app.get(
-    "/api/admin/purchases",
-    response_model=list[schemas.PurchaseAdminOut]
-)
-def all_purchases(
-    db: Session = Depends(get_db),
-    admin=Depends(admin_only) 
-):
-    return crud.get_all_purchases(db)
+
