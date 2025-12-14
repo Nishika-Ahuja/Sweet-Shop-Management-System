@@ -1,6 +1,7 @@
 # Sweet Shop Management System
 
 This project is deployed using Render for the backend and Netlify for the frontend.
+
 **Live Demo:** [Click here to visit deployed app](https://steady-pasca-80fced.netlify.app/)
 
 ![badge](https://img.shields.io/badge/Frontend-Angular-red.svg)
