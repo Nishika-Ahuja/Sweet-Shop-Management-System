@@ -55,6 +55,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * [API Endpoints](#api-endpoints)
 * [Screens & Modules](#screens--modules)
 * [Application Pages Overview](#application-pages-overview)
+* [Testing & TDD (Backend)](#testing-and-tdd)
+
 
 <!-- ABOUT THE PROJECT -->
 
@@ -323,3 +325,39 @@ This page allows administrators to view purchase records of all users.
 - Restricted to admin users only
 
 ---
+
+## Testing & TDD (Backend)
+
+The **Sweet Shop Management System** backend is developed following **Test-Driven Development (TDD)** principles.  
+
+### TDD Approach
+
+1. **Red → Green → Refactor**
+   * **Red**: Write a failing test first for a feature.
+   * **Green**: Implement functionality to make the test pass.
+   * **Refactor**: Clean the code while keeping tests green.
+
+2. **Tools**
+   * **Pytest** – for writing and running Python tests.
+   * **FastAPI TestClient** – simulates API requests for testing endpoints.
+   * **SQLite** – used as the test database for isolated test runs.
+
+3. **Fixtures**
+   * `user_token` – Provides JWT token for a normal user.
+   * `admin_token` – Provides JWT token for an admin user.
+
+4. **Tested Features**
+   | Feature | Test File | Description |
+   |---------|-----------|-------------|
+   | User Registration & Login | `tests/test_auth.py` | Tests creating users and login functionality. |
+   | Admin Sweet Management | `tests/test_sweets.py` | Tests admin adding sweets and verifies user restrictions (403). |
+   | Sweet Purchase | `tests/test_inventory.py` | Tests purchasing sweets, including out-of-stock cases. |
+
+5. **Running Tests**
+
+```bash
+pytest --cov=. --cov-report=term-missing
+
+The command runs all tests and generates coverage report.
+![Test Case](./src/assets/testCase1.jpg)
+![Test Case](./src/assets/testCase2.jpg)
