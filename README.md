@@ -29,100 +29,276 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  -->
 
 
- project:
-  title: "🍬 Sweet Shop Management System"
-  description: "A modern full-stack Sweet Shop Management System built with Angular (frontend) and FastAPI (backend). Users can browse, search, and purchase sweets, while admins can manage stock and track all purchases."
-  
-features:
-  - User registration & login
-  - Admin & user dashboards
-  - Browse and search sweets by name, category, and price range
-  - Purchase sweets with stock tracking
-  - Admin-only actions: add, restock, delete sweets
-  - View purchase history (user-specific and all users for admin)
-  - JWT-based authentication
-  - Responsive UI with Angular
+ # 🍬 SweetShop Management System
 
-technology_stack:
-  frontend:
-    - Angular
-    - TypeScript
-    - HTML
-    - CSS
-  backend:
-    - FastAPI
-    - Python
-    - SQLAlchemy
-  database: SQLite
-  authentication: JWT
+![badge](https://img.shields.io/badge/Frontend-Angular-red.svg)
+![badge](https://img.shields.io/badge/Backend-FastAPI-green.svg)
+![badge](https://img.shields.io/badge/Database-SQLite-blue.svg)
+![badge](https://img.shields.io/badge/Auth-JWT-orange.svg)
 
-project_structure:
-  frontend:
-    path: "src/app/"
-    folders:
-      - pages:
-          - login
-          - register
-          - dashboard
-          - admin
-      - services
-      - guards
-      - models
-    others:
-      - environment
-      - home
-      - navbar
-  backend:
-    path: "sweet-backend/"
-    files:
-      - main.py
-      - auth.py
-      - crud.py
-      - models.py
-      - schemas.py
-      - database.py
-      - requirements.txt
+<!-- TABLE OF CONTENTS -->
 
-backend_setup:
-  steps:
-    - "cd sweet-backend"
-    - "python -m venv venv"
-    - "source venv/bin/activate  # Linux/macOS"
-    - "venv\\Scripts\\activate   # Windows"
-    - "pip install -r requirements.txt"
-    - "uvicorn main:app --reload"
-  url: "http://127.0.0.1:8000/"
-  admin_credentials:
-    username: "admin"
-    password: "admin123"
+## Table of Contents
 
-frontend_setup:
-  steps:
-    - "cd sweet-frontend"
-    - "npm install"
-    - "ng serve"
-  url: "http://localhost:4200/"
-  api_config: "src/environments/environment.ts"
-  api_url: "http://127.0.0.1:8000/api"
+* [About The Project](#about-the-project)
+* [Features](#features)
+* [Tech Stack](#tech-stack)
+* [Project Architecture](#project-architecture)
+* [Getting Started](#getting-started)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Environment Configuration](#environment-configuration)
+* [Usage](#usage)
+* [API Endpoints](#api-endpoints)
+* [Screens & Modules](#screens--modules)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [Contact](#contact)
 
-running_locally:
-  steps:
-    - "Start backend server"
-    - "Start Angular frontend server"
-    - "Open browser at http://localhost:4200/"
-    - "Register a new user or login as admin"
+<!-- ABOUT THE PROJECT -->
 
-screenshots: "Add your screenshots here"
+## About The Project
 
-ai_usage:
-  description: "This project was assisted by AI (ChatGPT) for generating Angular components, API services, FastAPI CRUD operations, and documentation."
+**SweetShop Management System** is a full‑stack web application designed to manage an online sweet shop 🍭. The system supports **user and admin roles**, secure authentication using **JWT**, sweet inventory management, purchasing, restocking, and purchase history tracking.
 
-notes:
-  - "System uses JWT tokens for authentication"
-  - "Admin users have full privileges, normal users have restricted access"
-  - "Purchase history tracked per user and globally for admins"
+The project demonstrates real‑world implementation of:
 
-license:
-  type: "MIT License"
-  description: "Open-source project"
+* Role‑based access control (Admin vs User)
+* RESTful API design
+* Angular + FastAPI integration
+* Secure authentication & authorization
 
+This project is ideal for academic submissions, portfolio projects, and learning full‑stack development.
+
+<!-- FEATURES -->
+
+## Features
+
+### 👤 User Features
+
+* User registration & login
+* JWT‑based authentication
+* Browse available sweets
+* Search sweets by name, category, and price range
+* Purchase sweets
+* View personal purchase history
+
+### 🛠️ Admin Features
+
+* Admin login
+* Add new sweets
+* Update sweet details
+* Delete sweets
+* Restock sweets
+* View all users’ purchase history
+
+### 🔐 Security Features
+
+* Password hashing using **Passlib**
+* JWT token authentication
+* Route protection using Angular Guards
+* Backend admin‑only API protection
+
+<!-- TECH STACK -->
+
+## Tech Stack
+
+### Frontend
+
+* **Angular**
+* TypeScript
+* HTML & CSS
+* Angular Router
+* HTTP Interceptors
+
+### Backend
+
+* **FastAPI**
+* Python
+* SQLAlchemy ORM
+* JWT (python‑jose)
+* Passlib (Password Hashing)
+
+### Database
+
+* **SQLite**
+
+<!-- ARCHITECTURE -->
+
+## Project Architecture
+
+```
+Frontend (Angular)
+│
+├── Components (Home, Login, Register, Dashboard, Admin)
+├── Services (AuthService, SweetService)
+├── Guards (authGuard)
+├── Interceptors (TokenInterceptor)
+│
+Backend (FastAPI)
+│
+├── main.py        → API entry point
+├── auth.py        → Authentication & JWT
+├── crud.py        → Database operations
+├── models.py      → SQLAlchemy models
+├── schemas.py     → Pydantic schemas
+├── database.py    → DB configuration
+```
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+Follow the steps below to run the project locally.
+
+<!-- PREREQUISITES -->
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+* Node.js & npm
+* Angular CLI
+* Python 3.9+
+* pip
+
+<!-- INSTALLATION -->
+
+## Installation
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/your-username/sweetshop-management-system.git
+cd sweetshop-management-system
+```
+
+---
+
+### 2️⃣ Backend Setup (FastAPI)
+
+```sh
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Backend will run at:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+### 3️⃣ Frontend Setup (Angular)
+
+```sh
+cd frontend
+npm install
+ng serve
+```
+
+Frontend will run at:
+
+```
+http://localhost:4200
+```
+
+<!-- ENV CONFIG -->
+
+## Environment Configuration
+
+Update **environment.ts** in Angular:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://127.0.0.1:8000/api'
+};
+```
+
+<!-- USAGE -->
+
+## Usage
+
+* Register as a user
+* Login to access dashboard
+* Admin credentials (auto‑created):
+
+  * **Username:** admin
+  * **Password:** admin123
+
+Admins can manage sweets, restock inventory, and monitor purchases.
+
+<!-- API ENDPOINTS -->
+
+## API Endpoints
+
+### Authentication
+
+* `POST /api/auth/register`
+* `POST /api/auth/login`
+
+### Sweets
+
+* `GET /api/sweets`
+* `POST /api/sweets` (Admin)
+* `PUT /api/sweets/{id}` (Admin)
+* `DELETE /api/sweets/{id}` (Admin)
+* `POST /api/sweets/{id}/purchase`
+* `POST /api/sweets/{id}/restock` (Admin)
+* `GET /api/sweets/search`
+
+### Purchases
+
+* `GET /api/users/me/purchases`
+* `GET /api/admin/purchases` (Admin)
+
+<!-- SCREENS -->
+
+## Screens & Modules
+
+* Home Page
+* Login & Register
+* User Dashboard
+* Admin Dashboard
+* Purchase History
+* Navbar with role‑based options
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+* ✅ Authentication & Authorization
+* ✅ Role‑based dashboards
+* ✅ Sweet inventory management
+* ✅ Purchase tracking
+* ⏳ UI Enhancements
+* ⏳ Payment gateway integration
+* ⏳ Deployment (Docker / Cloud)
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are always welcome 🚀
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/NewFeature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/NewFeature`)
+5. Open a Pull Request
+
+<!-- CONTACT -->
+
+## Contact
+
+**Developer:** Nishika Ahuja
+📧 Email: [your-email@example.com](mailto:your-email@example.com)
+💼 LinkedIn: [https://www.linkedin.com](https://www.linkedin.com)
+🐙 GitHub: [https://github.com/your-username](https://github.com/your-username)
+
+---
+
+⭐ If you like this project, don’t forget to give it a star!
