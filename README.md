@@ -326,7 +326,7 @@ This page allows administrators to view purchase records of all users.
 
 ---
 
-## Testing & TDD (Backend)
+## Testing and TDD
 
 The **Sweet Shop Management System** backend is developed following **Test-Driven Development (TDD)** principles.  
 
