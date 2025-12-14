@@ -5,6 +5,7 @@ from database import engine, get_db, SessionLocal
 from fastapi.middleware.cors import CORSMiddleware
 from auth import get_current_user, admin_only
 from datetime import datetime
+from fastapi import status
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -31,11 +32,16 @@ def create_admin():
 
 create_admin()
 
-@app.post("/api/auth/register", response_model=schemas.UserOut)
+@app.post(
+    "/api/auth/register",
+    response_model=schemas.UserOut,
+    status_code=status.HTTP_201_CREATED
+)
 def register(user: schemas.UserLogin, db: Session = Depends(get_db)):
     if crud.get_user_by_username(db, user.username):
         raise HTTPException(status_code=400, detail="Username already exists")
     return crud.create_user(db, user)
+
 
 
 @app.post("/api/auth/login")
@@ -55,8 +61,13 @@ def list_sweets(db: Session = Depends(get_db)):
     return crud.get_sweets(db)
 
 @app.post("/api/sweets", response_model=schemas.SweetOut)
-def add_sweet(sweet: schemas.SweetCreate, db: Session = Depends(get_db)):
+def add_sweet(
+    sweet: schemas.SweetCreate,
+    db: Session = Depends(get_db),
+    admin=Depends(admin_only)
+):
     return crud.create_sweet(db, sweet)
+
 
 @app.put("/api/sweets/{sweet_id}", response_model=schemas.SweetOut)
 def update_sweet(
@@ -70,9 +81,8 @@ def update_sweet(
         raise HTTPException(status_code=404, detail="Sweet not found")
     return updated
 
-
 @app.delete("/api/sweets/{sweet_id}")
-def delete_sweet(sweet_id: int, db: Session = Depends(get_db)):
+def delete_sweet(sweet_id: int, db: Session = Depends(get_db), admin=Depends(admin_only)):
     deleted = crud.delete_sweet(db, sweet_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Sweet not found")
