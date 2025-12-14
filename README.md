@@ -54,7 +54,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * [Usage](#usage)
 * [API Endpoints](#api-endpoints)
 * [Screens & Modules](#screens--modules)
-* [Application Pages Overview](#Application Pages Overview)
+* [Application Pages Overview](#application-pages-overview)
 
 <!-- ABOUT THE PROJECT -->
 
