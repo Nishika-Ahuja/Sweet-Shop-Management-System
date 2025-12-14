@@ -29,12 +29,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  -->
 
 
- # SweetShop Management System
+ # Sweet Shop Management System
 
 ![badge](https://img.shields.io/badge/Frontend-Angular-red.svg)
 ![badge](https://img.shields.io/badge/Backend-FastAPI-green.svg)
 ![badge](https://img.shields.io/badge/Database-SQLite-blue.svg)
 ![badge](https://img.shields.io/badge/Auth-JWT-orange.svg)
+![badge](https://img.shields.io/badge/Language-TypeScript-blue.svg)
+![badge](https://img.shields.io/badge/Language-Python-yellow.svg)
+![badge](https://img.shields.io/badge/Framework-Angular%20%7C%20FastAPI-purple.svg)
+![badge](https://img.shields.io/badge/Status-Active-success.svg)
 
 <!-- TABLE OF CONTENTS -->
 
@@ -67,8 +71,6 @@ The project demonstrates real‑world implementation of:
 * RESTful API design
 * Angular + FastAPI integration
 * Secure authentication & authorization
-
-This project is ideal for academic submissions, portfolio projects, and learning full‑stack development.
 
 <!-- FEATURES -->
 
@@ -248,6 +250,79 @@ Admins can manage sweets, restock inventory, and monitor purchases.
 * Login & Register
 * User Dashboard
 * Admin Dashboard
-* Purchase History
+* User Purchase History
+* Admin Purchase History showing all users' purchase records
 * Navbar with role‑based options
 
+---
+## Application Pages Overview
+
+This section describes the main pages of the **SweetShop Management System** along with their purpose and functionality.
+
+---
+
+### Home Page
+![Home Page](./src/assets/home.jpg)
+
+The Home Page serves as the landing page of the application.  
+It displays a welcome message and dynamically shows navigation options based on the user’s authentication status:
+- Guest users can access **Login** and **Register**
+- Logged-in users are redirected to their respective dashboards
+- Admin users are redirected to the **Admin Dashboard**
+
+---
+
+### Login & Register
+![Login & Register](./src/assets/login.jpg)
+![Login & Register](./src/assets/register.jpg)
+
+This page allows users to create a new account or log in to an existing one.
+- Secure authentication using **JWT**
+- User role (Admin / User) is determined after login
+- Successful login redirects users to their appropriate dashboard
+
+---
+
+### User Dashboard
+![User Dashboard](./src/assets/userDashboard.jpg)
+
+The User Dashboard displays all available sweets in the shop.
+- View sweet name, category, price, and stock
+- Search sweets by name, category, and price range
+- Purchase sweets if stock is available
+- Automatically updates inventory after purchase
+
+---
+
+### Admin Dashboard
+![Admin Dashboard](./src/assets/adminDashboard1.jpg)
+![Admin Dashboard](./src/assets/adminDashboard2.jpg)
+
+The Admin Dashboard provides full control over the sweet inventory.
+- Add new sweets
+- Update sweet details
+- Delete sweets
+- Restock existing sweets
+- Restricted access using admin-only authorization
+
+---
+
+### User Purchase History
+![User Purchase History](./src/assets/userPurchaseHistory.jpg)
+
+This page shows the purchase history of the currently logged-in user.
+- Displays purchased sweet name, price, and purchase date
+- Sorted by most recent purchases
+- Accessible only to authenticated users
+
+---
+
+### Admin Purchase History
+![Admin Purchase History](./src/assets/adminViewPurchaseHistory.jpg)
+
+This page allows administrators to view purchase records of all users.
+- Displays username, sweet name, price, and purchase date
+- Helps admins track overall sales and user activity
+- Restricted to admin users only
+
+---
