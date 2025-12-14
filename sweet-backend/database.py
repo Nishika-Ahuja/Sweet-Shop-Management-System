@@ -1,15 +1,47 @@
+# from sqlalchemy import create_engine
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.orm import sessionmaker
+
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./sweetshop.db"
+
+# # Engine connects Python to the database
+# engine = create_engine(
+#     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+# )
+
+# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base = declarative_base()
+
+# def get_db():
+#     db = SessionLocal()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
+
+
+
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sweetshop.db"
-
-# Engine connects Python to the database
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "sqlite:///./sweetshop.db"  
 )
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+engine = create_engine(
+    f"sqlite:///{DATABASE_URL}" if not DATABASE_URL.startswith("sqlite") else DATABASE_URL,
+    connect_args={"check_same_thread": False}
+)
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
 
 Base = declarative_base()
 
@@ -19,3 +51,4 @@ def get_db():
         yield db
     finally:
         db.close()
+
