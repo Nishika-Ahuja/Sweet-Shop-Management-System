@@ -357,7 +357,7 @@ The **Sweet Shop Management System** backend is developed following **Test-Drive
 
 ```bash
 pytest --cov=. --cov-report=term-missing
-
+```
 The command runs all tests and generates coverage report.
 ![Test Case](./src/assets/testCase1.jpg)
 ![Test Case](./src/assets/testCase2.jpg)
