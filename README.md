@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  -->
 
 
- # 🍬 SweetShop Management System
+ # SweetShop Management System
 
 ![badge](https://img.shields.io/badge/Frontend-Angular-red.svg)
 ![badge](https://img.shields.io/badge/Backend-FastAPI-green.svg)
@@ -59,7 +59,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## About The Project
 
-**SweetShop Management System** is a full‑stack web application designed to manage an online sweet shop 🍭. The system supports **user and admin roles**, secure authentication using **JWT**, sweet inventory management, purchasing, restocking, and purchase history tracking.
+**SweetShop Management System** is a full‑stack web application designed to manage an online sweet shop. The system supports **user and admin roles**, secure authentication using **JWT**, sweet inventory management, purchasing, restocking, and purchase history tracking.
 
 The project demonstrates real‑world implementation of:
 
@@ -166,16 +166,15 @@ Make sure you have the following installed:
 
 ## Installation
 
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/sweetshop-management-system.git
-cd sweetshop-management-system
+git clone https://github.com/Nishika-Ahuja/Sweet-Shop-Management-System.git
 ```
 
 ---
 
-### 2️⃣ Backend Setup (FastAPI)
+### 2. Backend Setup (FastAPI)
 
 ```sh
 cd backend
@@ -191,10 +190,9 @@ http://127.0.0.1:8000
 
 ---
 
-### 3️⃣ Frontend Setup (Angular)
+### 3. Frontend Setup (Angular)
 
 ```sh
-cd frontend
 npm install
 ng serve
 ```
@@ -203,19 +201,6 @@ Frontend will run at:
 
 ```
 http://localhost:4200
-```
-
-<!-- ENV CONFIG -->
-
-## Environment Configuration
-
-Update **environment.ts** in Angular:
-
-```ts
-export const environment = {
-  production: false,
-  apiUrl: 'http://127.0.0.1:8000/api'
-};
 ```
 
 <!-- USAGE -->
@@ -266,39 +251,3 @@ Admins can manage sweets, restock inventory, and monitor purchases.
 * Purchase History
 * Navbar with role‑based options
 
-<!-- ROADMAP -->
-
-## Roadmap
-
-* ✅ Authentication & Authorization
-* ✅ Role‑based dashboards
-* ✅ Sweet inventory management
-* ✅ Purchase tracking
-* ⏳ UI Enhancements
-* ⏳ Payment gateway integration
-* ⏳ Deployment (Docker / Cloud)
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are always welcome 🚀
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/NewFeature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature/NewFeature`)
-5. Open a Pull Request
-
-<!-- CONTACT -->
-
-## Contact
-
-**Developer:** Nishika Ahuja
-📧 Email: [your-email@example.com](mailto:your-email@example.com)
-💼 LinkedIn: [https://www.linkedin.com](https://www.linkedin.com)
-🐙 GitHub: [https://github.com/your-username](https://github.com/your-username)
-
----
-
-⭐ If you like this project, don’t forget to give it a star!
