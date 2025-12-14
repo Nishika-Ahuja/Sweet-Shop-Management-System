@@ -51,13 +51,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * [Getting Started](#getting-started)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
-* [Environment Configuration](#environment-configuration)
 * [Usage](#usage)
 * [API Endpoints](#api-endpoints)
 * [Screens & Modules](#screens--modules)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [Contact](#contact)
+* [Application Pages Overview](#Application Pages Overview)
 
 <!-- ABOUT THE PROJECT -->
 
